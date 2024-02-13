@@ -33,25 +33,35 @@ export function fetchBreeds() {
     });
 }
 
-export function fetchCatByBreed(breedId) {
-  const fetchUrl = `${url}/images/search?breed_ids=${breedId}`;
+export async function fetchCatByBreed(breedId) {
+  const url = `https://api.thecatapi.com/v1/breeds/${breedId}`;
 
-  return fetch(fetchUrl, {
-    headers: {
-      'x-api-key': api_key,
-    },
-  })
-    .then(response => {
-      if (!response.ok) {
-        throw new Error(response.status);
-      }
-      return response.json();
-    })
-    .then(data => {
-      return data[0];
-    })
-    .catch(error => {
-      console.error('Error fetching cat by breed:', error);
-      throw error;
-    });
+  try {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error('Network response was not ok');
+    }
+
+    const breedData = await response.json();
+    renderCatInfo(breedData); // funkcja renderująca informacje o kocie na stronie
+  } catch (error) {
+    console.error('Error fetching cat by breed:', error);
+  }
+}
+
+function renderCatInfo(catData) {
+  const catInfoContainer = document.querySelector('.cat-info');
+  catInfoContainer.innerHTML = '';
+
+  const catImg = document.createElement('img');
+  catImg.src = catData.image.url;
+  catInfoContainer.appendChild(catImg);
+
+  const description = document.createElement('p');
+  description.textContent = catData.description;
+  catInfoContainer.appendChild(description);
+
+  const temperament = document.createElement('p');
+  temperament.textContent = catData.temperament;
+  catInfoContainer.appendChild(temperament);
 }
