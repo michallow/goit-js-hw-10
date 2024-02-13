@@ -43,22 +43,24 @@ export async function fetchCatByBreed(breedId) {
   return selectedBreed;
 }
 
-export async function renderCatInfo(cat) {
+export async function renderCatInfo(cats) {
   const catInfoContainer = document.querySelector('.cat-info');
-  if (cat.reference_image_id) {
-    catInfoContainer.innerHTML = `
-        <p><b>Name:</b> ${cat.name}</p>
-        <p><b>Description:</b> ${cat.description}</p>
-        <p><b>Temperament:</b> ${cat.temperament}</p>
-        <img src="https://cdn2.thecatapi.com/images/${cat.reference_image_id}.jpg" alt="Cat Image">
-      `;
-  } else {
-    console.log('No image found');
-    catInfoContainer.innerHTML = `
-        <p><b>Name:</b> ${cat.name}</p>
-        <p><b>Description:</b> ${cat.description}</p>
-        <p><b>Temperament:</b> ${cat.temperament}</p>
-        <p>No image found</p>
-      `;
-  }
+  const markup = cats
+    .map(
+      cat => `
+            <div class="cat-item">
+                <p><b>Name:</b> ${cat.name}</p>
+                <p><b>Description:</b> ${cat.description}</p>
+                <p><b>Temperament:</b> ${cat.temperament}</p>
+                ${
+                  cat.reference_image_id
+                    ? `<img src="https://cdn2.thecatapi.com/images/${cat.reference_image_id}.jpg" alt="Cat Image">`
+                    : '<p>No image found</p>'
+                }
+            </div>
+        `
+    )
+    .join('');
+
+  catInfoContainer.innerHTML = markup;
 }
