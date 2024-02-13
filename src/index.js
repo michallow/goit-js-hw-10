@@ -28,27 +28,29 @@ fetchBreeds()
     console.error('Error fetching breeds:', error);
   });
 
-breedSelect.addEventListener('change', event => {
-  const selectedBreedId = event.target.value;
+fetchCatByBreed();
 
-  fetchCatByBreed(selectedBreedId)
-    .then(breed => {
-      const catInfo = document.querySelector('.cat-info');
-      catInfo.innerHTML = '';
+// breedSelect.addEventListener('change', event => {
+//   const selectedBreedId = event.target.value;
 
-      const catImg = document.createElement('img');
-      catImg.src = breed.url;
-      catInfo.appendChild(catImg);
+//   fetchCatByBreed(selectedBreedId)
+//     .then(breed => {
+//       const catInfo = document.querySelector('.cat-info');
+//       catInfo.innerHTML = '';
 
-      const description = document.createElement('p');
-      description.textContent = breed.description;
-      catInfo.appendChild(description);
+//       const catImg = document.createElement('img');
+//       catImg.src = breed.url;
+//       catInfo.appendChild(catImg);
 
-      const temperament = document.createElement('p');
-      temperament.textContent = breed.temperament;
-      catInfo.appendChild(temperament);
-    })
-    .catch(error => {
-      console.error('Error fetching cat by breed:', error);
-    });
-});
+//       const description = document.createElement('p');
+//       description.textContent = breed.description;
+//       catInfo.appendChild(description);
+
+//       const temperament = document.createElement('p');
+//       temperament.textContent = breed.temperament;
+//       catInfo.appendChild(temperament);
+//     })
+//     .catch(error => {
+//       console.error('Error fetching cat by breed:', error);
+//     });
+// });

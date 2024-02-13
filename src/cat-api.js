@@ -34,34 +34,18 @@ export function fetchBreeds() {
 }
 
 export async function fetchCatByBreed(breedId) {
-  const url = `https://api.thecatapi.com/v1/breeds/${breedId}`;
-
-  try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error('Network response was not ok');
+  return fetch(
+    `https://api.thecatapi.com/v1/images/search?breed_ids=${breedId}`,
+    {
+      headers: {
+        'x-api-key': api_key,
+      },
     }
-
-    const breedData = await response.json();
-    renderCatInfo(breedData); // funkcja renderująca informacje o kocie na stronie
-  } catch (error) {
-    console.error('Error fetching cat by breed:', error);
-  }
-}
-
-function renderCatInfo(catData) {
-  const catInfoContainer = document.querySelector('.cat-info');
-  catInfoContainer.innerHTML = '';
-
-  const catImg = document.createElement('img');
-  catImg.src = catData.image.url;
-  catInfoContainer.appendChild(catImg);
-
-  const description = document.createElement('p');
-  description.textContent = catData.description;
-  catInfoContainer.appendChild(description);
-
-  const temperament = document.createElement('p');
-  temperament.textContent = catData.temperament;
-  catInfoContainer.appendChild(temperament);
+  ).then(response => {
+    if (!response.ok) {
+      throw new Error(response.status);
+    }
+    console.log(breedId);
+    return response.json();
+  });
 }
