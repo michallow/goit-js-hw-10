@@ -8,17 +8,19 @@ export const catInfo = document.querySelector('.cat-info');
 export const loader = document.querySelector('.loader');
 export const error = document.querySelector('.error');
 
-// const showLoader = () => {
-//   loader.classList.add('visible');
-// };
+const showLoader = () => {
+  loader.classList.add('visible');
+  console.log('widac')
+};
 
-// const hideLoader = () => {
-//   loader.classList.remove('visible');
-//   loader.classList.add('hidden');
-// };
+const hideLoader = () => {
+  loader.classList.remove('visible');
+  loader.classList.add('hidden');
+  console.log('nie widac');
+};
 
 export function fetchBreeds() {
-  // showLoader();
+  showLoader();
   return fetch(url, {
     headers: {
       'x-api-key': api_key,
@@ -41,7 +43,7 @@ export function fetchBreeds() {
         option.innerHTML = breed.name;
         breedSelect.appendChild(option);
       }
-      // hideLoader();
+      hideLoader();
     })
     .catch(error => {
       console.error('Error fetching breeds:', error);

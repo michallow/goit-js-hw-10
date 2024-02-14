@@ -4,38 +4,38 @@ body {
   margin: 50px;
 }
 
-.hidden {
-  display: none;
-}
-
-.visible {
-  display: block;
-}
-
 .loader {
   width: 16px;
   height: 16px;
   border-radius: 50%;
   display: block;
-  margin:15px auto;
+  margin: 15px auto;
   position: relative;
-  background: #FFF;
-  box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+  background: #fff;
+  box-shadow: -24px 0 #fff, 24px 0 #fff;
   box-sizing: border-box;
   animation: shadowPulse 2s linear infinite;
 }
 
 @keyframes shadowPulse {
   33% {
-    background: #FFF;
-    box-shadow: -24px 0 #FF3D00, 24px 0 #FFF;
+    background: #fff;
+    box-shadow: -24px 0 #ff3d00, 24px 0 #fff;
   }
   66% {
-    background: #FF3D00;
-    box-shadow: -24px 0 #FFF, 24px 0 #FFF;
+    background: #ff3d00;
+    box-shadow: -24px 0 #fff, 24px 0 #fff;
   }
   100% {
-    background: #FFF;
-    box-shadow: -24px 0 #FFF, 24px 0 #FF3D00;
+    background: #fff;
+    box-shadow: -24px 0 #fff, 24px 0 #ff3d00;
   }
+}
+
+.hidden {
+  display: none;
+}
+
+.visible {
+  display: block;
 }
