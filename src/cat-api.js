@@ -10,17 +10,16 @@ export const error = document.querySelector('.error');
 
 const showLoader = () => {
   loader.classList.add('visible');
-  console.log('widac')
 };
 
 const hideLoader = () => {
   loader.classList.remove('visible');
   loader.classList.add('hidden');
-  console.log('nie widac');
 };
 
 export function fetchBreeds() {
   showLoader();
+  document.querySelector('.cat-info').style.display = 'none';
   return fetch(url, {
     headers: {
       'x-api-key': api_key,
@@ -44,6 +43,7 @@ export function fetchBreeds() {
         breedSelect.appendChild(option);
       }
       hideLoader();
+      document.querySelector('.cat-info').style.display = 'block';
     })
     .catch(error => {
       console.error('Error fetching breeds:', error);
@@ -52,11 +52,13 @@ export function fetchBreeds() {
 
 export async function fetchCatByBreed(breedId) {
   showLoader();
+  document.querySelector('.cat-info').style.display = 'none';
   const selectedBreed = storedBreeds.find(breed => breed.id === breedId);
   if (!selectedBreed) {
     throw new Error(`Breed with id ${breedId} not found`);
   }
   hideLoader();
+  document.querySelector('.cat-info').style.display = 'block';
   return selectedBreed;
 }
 
