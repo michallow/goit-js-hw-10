@@ -8,17 +8,19 @@ export const catInfo = document.querySelector('.cat-info');
 export const loader = document.querySelector('.loader');
 export const error = document.querySelector('.error');
 
-const showLoader = () => {
-  loader.classList.add('visible');
-};
+// const showLoader = () => {
+//   loader.classList.add('visible');
+// };
 
-const hideLoader = () => {
-  loader.classList.remove('visible');
-  loader.classList.add('hidden');
-};
+// const hideLoader = () => {
+//   loader.classList.remove('visible');
+//   loader.classList.add('hidden');
+// };
 
 export function fetchBreeds() {
-  document.querySelector('.breed-select').style.display = 'none';
+  // document.querySelector('.breed-select').style.display = 'none';
+  document.querySelector('select').style.display = 'none';
+  document.querySelector('.cat-info').style.display = 'none';
   document.querySelector('.loader').style.display = 'block';
   // showLoader();
   return fetch(url, {
@@ -44,7 +46,9 @@ export function fetchBreeds() {
         breedSelect.appendChild(option);
       }
       // hideLoader();
-      breedSelect.style.display = 'block';
+      // breedSelect.style.display = 'block';
+      document.querySelector('select').style.display = 'block';
+      document.querySelector('.cat-info').style.display = 'block';
       document.querySelector('.loader').style.display = 'none';
     })
     .catch(error => {
