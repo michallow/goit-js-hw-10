@@ -18,10 +18,6 @@ export const error = document.querySelector('.error');
 // };
 
 export function fetchBreeds() {
-  // document.querySelector('.breed-select').style.display = 'none';
-  document.querySelector('select').style.display = 'none';
-  document.querySelector('.cat-info').style.display = 'none';
-  document.querySelector('.loader').style.display = 'block';
   // showLoader();
   return fetch(url, {
     headers: {
@@ -46,10 +42,6 @@ export function fetchBreeds() {
         breedSelect.appendChild(option);
       }
       // hideLoader();
-      // breedSelect.style.display = 'block';
-      document.querySelector('select').style.display = 'block';
-      document.querySelector('.cat-info').style.display = 'block';
-      document.querySelector('.loader').style.display = 'none';
     })
     .catch(error => {
       console.error('Error fetching breeds:', error);
