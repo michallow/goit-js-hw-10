@@ -11,6 +11,15 @@ import {
 axios.defaults.headers.common['x-api-key'] =
   'live_6XgfHVWeHr1Vp0Qc9jpmIcMoHZ9L9uTquqcjtkyD5VB41vjdTvxGn1USKmOULZT9';
 
+function hideError() {
+  error.style.display = 'none';
+}
+
+function showError(message) {
+  error.textContent = message;
+  error.style.display = 'block';
+}
+
 breedSelect.addEventListener('change', () => {
   const breedId = breedSelect.value;
   fetchCatByBreed(breedId)
@@ -23,7 +32,4 @@ fetchBreeds().catch(error => {
   showError('Oops! Something went wrong! Try reloading the page!');
 });
 
-function showError(message) {
-  error.textContent = message;
-  error.style.display = 'block';
-}
+hideError();
