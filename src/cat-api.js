@@ -20,6 +20,11 @@ const hideLoader = () => {
 };
 
 export function fetchBreeds() {
+  if (url !== 'https://api.thecatapi.com/v1/breeds') {
+    showError('Invalid URL.');
+    return;
+  }
+
   // showLoader();
 
   return fetch(url, {
