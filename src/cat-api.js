@@ -5,8 +5,22 @@ let storedBreeds = [];
 
 export const breedSelect = document.querySelector('.breed-select');
 export const catInfo = document.querySelector('.cat-info');
+export const loader = document.querySelector('.loader');
+export const error = document.querySelector('.error');
+
+const showLoader = () => {
+  loader.classList.add('visible');
+};
+
+const hideLoader = () => {
+  loader.classList.remove('visible');
+  loader.classList.add('hidden');
+};
 
 export function fetchBreeds() {
+  document.querySelector('.breed-select').style.display = 'none';
+  document.querySelector('.loader').style.display = 'block';
+  // showLoader();
   return fetch(url, {
     headers: {
       'x-api-key': api_key,
@@ -29,6 +43,9 @@ export function fetchBreeds() {
         option.innerHTML = breed.name;
         breedSelect.appendChild(option);
       }
+      // hideLoader();
+      breedSelect.style.display = 'block';
+      document.querySelector('.loader').style.display = 'none';
     })
     .catch(error => {
       console.error('Error fetching breeds:', error);
@@ -36,10 +53,12 @@ export function fetchBreeds() {
 }
 
 export async function fetchCatByBreed(breedId) {
+  showLoader();
   const selectedBreed = storedBreeds.find(breed => breed.id === breedId);
   if (!selectedBreed) {
     throw new Error(`Breed with id ${breedId} not found`);
   }
+  hideLoader();
   return selectedBreed;
 }
 
