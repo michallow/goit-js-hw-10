@@ -5,6 +5,7 @@ import {
   breedSelect,
   renderCatInfo,
   catInfo,
+  error,
 } from './cat-api.js';
 
 axios.defaults.headers.common['x-api-key'] =
