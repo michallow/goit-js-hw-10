@@ -6,10 +6,14 @@ import {
   renderCatInfo,
   catInfo,
   error,
+  hideLoader,
+  showLoader,
 } from './cat-api.js';
 
 axios.defaults.headers.common['x-api-key'] =
   'live_6XgfHVWeHr1Vp0Qc9jpmIcMoHZ9L9uTquqcjtkyD5VB41vjdTvxGn1USKmOULZT9';
+
+hideLoader();
 
 function hideError() {
   error.style.display = 'none';

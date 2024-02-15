@@ -8,12 +8,12 @@ export const catInfo = document.querySelector('.cat-info');
 export const loader = document.querySelector('.loader');
 export const error = document.querySelector('.error');
 
-const showLoader = () => {
+export const showLoader = () => {
   loader.classList.add('visible');
   document.querySelector('.cat-info').style.display = 'none';
 };
 
-const hideLoader = () => {
+export const hideLoader = () => {
   loader.classList.remove('visible');
   loader.classList.add('hidden');
   document.querySelector('.cat-info').style.display = 'block';
