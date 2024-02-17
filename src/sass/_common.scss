@@ -39,3 +39,26 @@ body {
 .visible {
   display: block;
 }
+
+.breed-select {
+  max-width: 500px;
+}
+
+.cat-info {
+  display: flex;
+  
+}
+
+.cat-desc {
+  font-size: 20px;
+}
+
+.cat-section {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.cat-image {
+  width: 500px;
+  height: auto;
+}

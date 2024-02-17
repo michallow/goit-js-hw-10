@@ -2,6 +2,8 @@ const url = 'https://api.thecatapi.com/v1/breeds';
 const api_key =
   'live_6XgfHVWeHr1Vp0Qc9jpmIcMoHZ9L9uTquqcjtkyD5VB41vjdTvxGn1USKmOULZT9';
 let storedBreeds = [];
+import SlimSelect from 'slim-select';
+import 'slim-select/dist/slimselect.css';
 
 export const breedSelect = document.querySelector('.breed-select');
 export const catInfo = document.querySelector('.cat-info');
@@ -25,8 +27,6 @@ export function fetchBreeds() {
     return;
   }
 
-  // showLoader();
-
   return fetch(url, {
     headers: {
       'x-api-key': api_key,
@@ -41,7 +41,6 @@ export function fetchBreeds() {
     .then(data => {
       storedBreeds = data;
       const breedSelect = document.querySelector('.breed-select');
-
       for (let i = 0; i < storedBreeds.length; i++) {
         const breed = storedBreeds[i];
         let option = document.createElement('option');
@@ -49,7 +48,13 @@ export function fetchBreeds() {
         option.innerHTML = breed.name;
         breedSelect.appendChild(option);
       }
-      // hideLoader();
+    })
+    .then(() => {
+      const slim = new SlimSelect({
+        select: '.breed-select',
+        placeholder: 'true',
+        settings: { placeholderText: 'Select Breed' },
+      });
     })
     .catch(error => {
       console.error('Error fetching breeds:', error);
@@ -57,12 +62,10 @@ export function fetchBreeds() {
 }
 
 export async function fetchCatByBreed(breedId) {
-  // showLoader();
   const selectedBreed = storedBreeds.find(breed => breed.id === breedId);
   if (!selectedBreed) {
     throw new Error(`Breed with id ${breedId} not found`);
   }
-  // hideLoader();
   return selectedBreed;
 }
 
@@ -85,10 +88,10 @@ export async function renderCatInfo(cats) {
     .map((cat, index) => {
       return `
       <div class="cat-item">
-        <p><b>Name:</b> ${cat.name}</p>
-        <p><b>Description:</b> ${cat.description}</p>
-        <p><b>Temperament:</b> ${cat.temperament}</p>
-        <img src="${images[index].src}" alt="Cat Image">
+        <p class="cat-desc"><span class="cat-section">Name</span>:<br> ${cat.name}</p>
+        <p class="cat-desc"><span class="cat-section">Description</span>:<br> ${cat.description}</p>
+        <p class="cat-desc"><span class="cat-section">Temperament</span>:<br> ${cat.temperament}</p>
+        <img class="cat-image" src="${images[index].src}" alt="Cat Image">
       </div>
     `;
     })
