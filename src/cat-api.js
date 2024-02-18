@@ -91,7 +91,10 @@ export async function renderCatInfo(cats) {
         <p class="cat-desc"><span class="cat-section">Name</span>:<br> ${cat.name}</p>
         <p class="cat-desc"><span class="cat-section">Description</span>:<br> ${cat.description}</p>
         <p class="cat-desc"><span class="cat-section">Temperament</span>:<br> ${cat.temperament}</p>
-        <img class="cat-image" src="${images[index].src}" alt="Cat Image">
+        
+      </div>
+      <div class="cat-image-box">
+      <img class="cat-image" src="${images[index].src}" alt="Cat Image">
       </div>
     `;
     })
