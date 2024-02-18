@@ -20,7 +20,7 @@ body {
   height: 16px;
   border-radius: 50%;
   display: block;
-  margin: 15px auto;
+  margin: 25px auto 25px auto;
   position: relative;
   background: #fff;
   box-shadow: -24px 0 #fff, 24px 0 #fff;
@@ -54,10 +54,11 @@ body {
 .breed-select {
   max-width: 500px;
   left: 25vw;
+  margin: 25px;
 }
 
 .cat-info {
-  margin-top: 20px;
+  margin: 25px auto;
   display: flex;
   max-width: 75vw;
   align-items: center;
