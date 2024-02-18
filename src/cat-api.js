@@ -58,6 +58,10 @@ export function fetchBreeds() {
     })
     .catch(error => {
       console.error('Error fetching breeds:', error);
+    })
+    .finally(() => {
+      const catInfo = document.querySelector('.cat-info');
+      catInfo.style.display = 'none';
     });
 }
 

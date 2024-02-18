@@ -52,8 +52,11 @@ breedSelect.addEventListener('change', () => {
     .then(cat => renderCatInfo([cat]))
     .catch(
       error =>
-        Notiflix.Notify.warning('Error fetching cat by breed', hideLoader()),
-      error
+        Notiflix.Notify.warning(
+          'Sorry! We are unable to find that particular cat in our base!',
+          hideLoader()
+        ),
+      renderCatInfo([])
     );
 });
 
@@ -61,7 +64,5 @@ fetchBreeds().catch(error => {
   console.error('Error fetching breeds:', error);
   showError('Oops! Something went wrong! Try reloading the page!');
 });
-
-
 
 hideError();
