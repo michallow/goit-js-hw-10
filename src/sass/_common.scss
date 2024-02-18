@@ -1,16 +1,18 @@
 @import '~node_modules/modern-normalize/modern-normalize.css';
 
+body, html {
+  margin: 0;
+  height: 100%
+}
+
 body {
-  max-width: 75vw;
-  max-height: 100%;
-  margin: auto;
-  margin-top: 50px;
   background: linear-gradient(
     180deg,
     rgba(9, 0, 156, 1) 5%,
     rgba(90, 68, 255, 1) 55%,
     rgba(255, 255, 255, 1) 100%
   );
+  background-size: cover;
 }
 
 .loader {
