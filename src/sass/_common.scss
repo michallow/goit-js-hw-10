@@ -4,6 +4,12 @@ body {
   max-width: 75vw;
   margin: auto;
   margin-top: 50px;
+  background: linear-gradient(
+    180deg,
+    rgba(9, 0, 156, 1) 14%,
+    rgba(90, 68, 255, 1) 55%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
 
 .loader {
@@ -48,9 +54,10 @@ body {
 }
 
 .cat-info {
+  margin-top: 20px;
   display: flex;
   max-width: 75vw;
-  align-content: center;
+  align-items: center;
 }
 
 .cat-item {

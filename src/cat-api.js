@@ -44,12 +44,15 @@ export function fetchBreeds() {
       for (let i = 0; i < storedBreeds.length; i++) {
         const breed = storedBreeds[i];
         let option = document.createElement('option');
+        
         option.value = breed.id;
         option.innerHTML = breed.name;
         breedSelect.appendChild(option);
+        
       }
     })
     .then(() => {
+      
       const slim = new SlimSelect({
         select: '.breed-select',
         placeholder: 'true',
