@@ -77,6 +77,7 @@ export async function renderCatInfo(cats) {
   showLoader();
   const catInfoContainer = document.querySelector('.cat-info');
   catInfoContainer.style.display = 'flex';
+  catInfoContainer.style.gap = '25px';
 
   const imagePromises = cats.map(cat => {
     return new Promise((resolve, reject) => {
