@@ -76,6 +76,7 @@ export async function fetchCatByBreed(breedId) {
 export async function renderCatInfo(cats) {
   showLoader();
   const catInfoContainer = document.querySelector('.cat-info');
+  catInfoContainer.style.display = 'flex';
 
   const imagePromises = cats.map(cat => {
     return new Promise((resolve, reject) => {
@@ -105,4 +106,5 @@ export async function renderCatInfo(cats) {
     .join('');
   hideLoader();
   catInfoContainer.innerHTML = markup;
+  catInfoContainer.style.display = 'flex';
 }
