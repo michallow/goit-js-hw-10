@@ -107,6 +107,6 @@ export async function renderCatInfo(cats) {
     .join('');
   hideLoader();
   catInfoContainer.innerHTML = markup;
-  catInfoContainer.style.display = 'flex';
-  catInfoContainer.style.gap = '25px';
+  // catInfoContainer.style.display = 'flex';
+  // catInfoContainer.style.gap = '25px';
 }
